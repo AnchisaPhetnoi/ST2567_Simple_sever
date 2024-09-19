@@ -266,7 +266,9 @@ static const httpd_uri_t hello = {
     .handler   = hello_get_handler,
     /* Let's pass response string in user
      * context to demonstrate it's usage */
-    .user_ctx  = "Hello Birthay to you!"
+
+    // 4. add analogtxt to html element
+    .user_ctx  = analogtext
 };
 
 /* An HTTP POST handler */
@@ -371,11 +373,15 @@ static esp_err_t ctrl_put_handler(httpd_req_t *req)
     return ESP_OK;
 }
 
-static const httpd_uri_t ctrl = {
-    .uri       = "/ctrl",
-    .method    = HTTP_PUT,
-    .handler   = ctrl_put_handler,
-    .user_ctx  = NULL
+static const httpd_uri_t hello = {
+    .uri       = "/hello",
+    .method    = HTTP_GET,
+    .handler   = hello_get_handler,
+    /* Let' s pass response string in user
+     * context to demonstrate it's usage */
+
+    // 4. add analogtxt to html element
+      .user_ctx  = analogtext
 };
 
 static httpd_handle_t start_webserver(void)
